@@ -18,3 +18,6 @@ The most valuable direction is open-ended Human–AI discovery, not mechanically
 
 ## Fresh runtime procedure
 Fresh retrieve README, WORKFLOW, latest notes, live main, and open PRs from this repository. Do not trust conversation summary as Current. Discuss before implementing, and keep experiments on separate branches until explicitly accepted. Chat numbers identify sessions, not durable authority.
+
+## Queue experiments — closed 2026-10-13 JST
+Human requested ending the '100人の正解' / '空いている方へ' workstream. PR #4 is closed without merge; code, tests and creation notes remain on `experiment/hundred-right-answers`. Do not resume this experiment's improvements without a new Human request. Read `notes/2026-10-13-queue-experiments-closed.md` for the feedback and closure path. No prototype was adopted into public main/index.html. Other PRs are outside this closure.
