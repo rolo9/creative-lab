@@ -14,10 +14,13 @@
 - `notes/2026-10-12-rationality-and-emergence.md`: discussion path from particle phenomena to supply chains, echo chambers, emergent behavior, escalator capacity, and whose rationality is optimized.
 
 ## Continuation
-The most valuable direction is open-ended Human–AI discovery, not mechanically improving particle animation. Follow the insight as it arises, debate interpretations and counterexamples, and avoid converting inspiration into a predetermined demonstration or making Human an involuntary tester. No new experiment is currently authorized. Preserve intellectual honesty, playful exploration, and clear distinction between aggregate throughput, collective welfare, and individual interests.
+The most valuable direction is open-ended Human–AI discovery, not mechanically improving particle animation. Follow the insight as it arises, debate interpretations and counterexamples, and avoid converting inspiration into a predetermined demonstration or making Human an involuntary tester. Human subsequently approved the '忘れることで育つ絵' proposal. The active prototype is now '忘れる庭' on experiment/forgetting-garden. This does not authorize public-main adoption. Preserve intellectual honesty, playful exploration, and clear distinction between aggregate throughput, collective welfare, and individual interests.
 
 ## Fresh runtime procedure
 Fresh retrieve README, WORKFLOW, latest notes, live main, and open PRs from this repository. Do not trust conversation summary as Current. Discuss before implementing, and keep experiments on separate branches until explicitly accepted. Chat numbers identify sessions, not durable authority.
 
 ## Queue experiments — closed 2026-10-13 JST
 Human requested ending the '100人の正解' / '空いている方へ' workstream. PR #4 is closed without merge; code, tests and creation notes remain on `experiment/hundred-right-answers`. Do not resume this experiment's improvements without a new Human request. Read `notes/2026-10-13-queue-experiments-closed.md` for the feedback and closure path. No prototype was adopted into public main/index.html. Other PRs are outside this closure.
+
+## Active prototype — 忘れる庭
+`experiments/forgetting-garden.html` and `forgetting-garden.js`: touch-driven drawing where nearby old forms partly dissolve and pass their colors to new forms. See `notes/2026-10-13-forgetting-garden.md` and `tests/forgetting-garden.test.cjs`. Model/UI-substitute tests and offline Canvas images checked; actual browser/mobile rendering remains unverified. Assess the felt experience after Human uses it. The closed queue workstream remains closed.
