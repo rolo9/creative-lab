@@ -1,7 +1,7 @@
 # Creative Lab — 体験から学問へ：Physical AIにつながる探索ロードマップ
 
 Updated: 2026-10-15 JST
-Status: Human-authorized direction; first experience not yet implemented
+Status: Experience 01 prototype delivered; Human experience pending
 
 ## 目的と役割（Humanの明示的な再確認）
 未来に自分が作りうる成果物を先に体験し、それを成立させる学問領域を認知する。世界の広さを知ることが目的。Humanはこの活動では制作担当にならず、AIが制作した成果物を実際に触って体験する。
@@ -41,3 +41,10 @@ AIが題材・順序・実装・検証・必要な説明を用意する。Human�
 - カメラの色見本は別の未着手候補として保持。手書き数字ラボは提案済みの代替候補であり、今の主系列ではない。
 - 行列実験は終了済み。忘れる庭の美しさを、この新方針の達成と見なさない。
 - 試作は別ブランチ/PRで保持。既存公開main/index.htmlへの採用は別のrelease判断。
+
+## 第1回の現在地
+- 体験URL: https://creative-lab-hundred-answers.brawnytuna64.chatgpt.site/motion-prediction/index.html
+- 実装: `experiment/motion-prediction` / Draft PR #6 https://github.com/rolo9/creative-lab/pull/6 。公開main/index.htmlは変更していない。
+- 3種類の投げ方、同一時刻での予測切替、実際に学習した小規模NNを用意した。内部の位置・速度を直接入力し、NNは垂直方向の次状態を学習。物理式は正解シミュレータと同じルールなので誤差ゼロになる。
+- 合成データの訓練・独立テスト、PythonとJSの推論一致、操作の代替DOM検証を実施。実ブラウザでの表示・操作は未確認。詳細は同ブランチのREADME・訓練記録・制作ノート参照。
+- Humanの体験・理解は未確認。次はまず成果物を触る機会を置き、必要な説明や次段階へつなぐ。
