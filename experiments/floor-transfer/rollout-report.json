@@ -1,0 +1,15 @@
+{
+  "contact_seconds": 0.55,
+  "hard_endpoint_errors": {
+    "original": 0.11991183236475544,
+    "new": 3.065924665477739
+  },
+  "changed_floor_endpoint_errors": {
+    "original": 2.4516131676352457,
+    "new": 0.4943996654777376
+  },
+  "changed_floor_mean_position_errors": {
+    "original": 0.7833732022189395,
+    "new": 0.12015586967230259
+  }
+}
