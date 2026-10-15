@@ -24,3 +24,6 @@ Human requested ending the '100人の正解' / '空いている方へ' workstrea
 
 ## Current experience contract — 2026-10-15 JST
 The purpose is to experience possible future artifacts and recognize the academic fields behind them: to discover the breadth of technology. AI owns the systematic sequence, artifact production and verification; Human operates and experiences artifacts. Read the explicit role boundaries, first experience and six-stage map in `EXPERIENCE_ROADMAP.md`. Treat the recovered Physical AI concern as a working hypothesis, not a universal claim about current VLA research. Keep other independent learning activities unchanged.
+
+## Current correction — 2026-10-16
+Read the Current redesign section of EXPERIENCE_ROADMAP.md before acting. Human has tried experiences 01/02 and found comparisons did not expand into meaningful design decisions. Older pending-feedback markers are historical. The catching device proposal is withdrawn; do not build it or advance the six-stage map automatically. Keep the ball/floor artifact and develop more data versus missing input, known parameters versus inferred history, model choice and pros/cons, and honest evaluation. AI explains and builds; Human operates, with no mandatory quiz or topic generation. Current task is project redesign, not new feature implementation.
