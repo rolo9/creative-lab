@@ -1,0 +1,32 @@
+{
+  "seed": 4317,
+  "dt": 0.05,
+  "gravity": 9.8,
+  "floor": 0.15,
+  "restitution": 0.75,
+  "training_candidates": 24000,
+  "internal_validation_fraction": 0.15,
+  "test_samples": 6000,
+  "test_seed": 9321,
+  "input": [
+    "height / 6",
+    "vertical velocity / 12"
+  ],
+  "output": [
+    "next height / 6",
+    "next vertical velocity / 12"
+  ],
+  "hidden_layers": [
+    48,
+    48
+  ],
+  "activation": "tanh",
+  "iterations": 160,
+  "sklearn_version": "1.8.0",
+  "numpy_version": "2.3.5",
+  "test_height_mae_m": 0.02209050820142238,
+  "test_velocity_mae_mps": 0.16007335722191762,
+  "convergence_warnings": [
+    "Stochastic Optimizer: Maximum iterations (160) reached and the optimization hasn't converged yet."
+  ]
+}

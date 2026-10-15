@@ -1,0 +1,71 @@
+{
+  "horizon_seconds": 1.5,
+  "cases": {
+    "arc": {
+      "initial": {
+        "x": 1.5,
+        "y": 3.8,
+        "vx": 3,
+        "vy": 1
+      },
+      "errors": {
+        "straight": {
+          "final_error_m": 2.8249999999999944,
+          "mean_path_error_m": 2.1927016129032224
+        },
+        "physics": {
+          "final_error_m": 0,
+          "mean_path_error_m": 0
+        },
+        "learned": {
+          "final_error_m": 0.33565498775568914,
+          "mean_path_error_m": 0.09865815769736548
+        }
+      }
+    },
+    "low": {
+      "initial": {
+        "x": 1.5,
+        "y": 1,
+        "vx": 4,
+        "vy": 4
+      },
+      "errors": {
+        "straight": {
+          "final_error_m": 5.8500000000000005,
+          "mean_path_error_m": 2.8003629032258073
+        },
+        "physics": {
+          "final_error_m": 0,
+          "mean_path_error_m": 0
+        },
+        "learned": {
+          "final_error_m": 0.004793003128451989,
+          "mean_path_error_m": 0.04237765636357099
+        }
+      }
+    },
+    "down": {
+      "initial": {
+        "x": 1.5,
+        "y": 4,
+        "vx": 2,
+        "vy": -5
+      },
+      "errors": {
+        "straight": {
+          "final_error_m": 7.012875000000003,
+          "mean_path_error_m": 2.6854435483870978
+        },
+        "physics": {
+          "final_error_m": 0,
+          "mean_path_error_m": 0
+        },
+        "learned": {
+          "final_error_m": 0.3817886317295529,
+          "mean_path_error_m": 0.1692744807967725
+        }
+      }
+    }
+  }
+}
