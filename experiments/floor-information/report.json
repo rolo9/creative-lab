@@ -1,0 +1,54 @@
+{
+  "seed": 4317,
+  "test_seed": 9321,
+  "training_floors": [
+    0.3,
+    0.45,
+    0.6,
+    0.75
+  ],
+  "impact_speed_range_mps": [
+    2,
+    9
+  ],
+  "target": "upward speed immediately after impact",
+  "law": "upward speed = restitution * downward speed",
+  "model": "MLP tanh (16,16), squared loss",
+  "split": "base speed groups; first 750 fit, remaining 150 validation; independent test seed",
+  "fit_samples_each": 3000,
+  "validation_samples_each": 600,
+  "test_samples_each": 2000,
+  "no_noise": true,
+  "report": {
+    "single": {
+      "iterations": 119,
+      "fit_samples": 3000,
+      "validation_samples": 600,
+      "validation_mae_mps": 0.007530483316834449,
+      "warnings": [],
+      "known_mae_mps": 1.2724027201330126,
+      "unseen_inside_mae_mps": 1.2705756201985454,
+      "unseen_outside_mae_mps": 0.8457433913247747
+    },
+    "mixed": {
+      "iterations": 38,
+      "fit_samples": 3000,
+      "validation_samples": 600,
+      "validation_mae_mps": 0.8349718640261952,
+      "warnings": [],
+      "known_mae_mps": 0.8465276046093279,
+      "unseen_inside_mae_mps": 0.10226319414906862,
+      "unseen_outside_mae_mps": 2.014350123634151
+    },
+    "informed": {
+      "iterations": 153,
+      "fit_samples": 3000,
+      "validation_samples": 600,
+      "validation_mae_mps": 0.010353177373832562,
+      "warnings": [],
+      "known_mae_mps": 0.01034478243948755,
+      "unseen_inside_mae_mps": 0.009414127205728269,
+      "unseen_outside_mae_mps": 0.06689905968888091
+    }
+  }
+}
