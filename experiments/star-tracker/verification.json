@@ -1,0 +1,117 @@
+{
+  "cases": [
+    {
+      "seed": 1,
+      "keep": 1,
+      "detected": 17,
+      "matched": 17,
+      "error_degrees": 0.027413659593558622
+    },
+    {
+      "seed": 1,
+      "keep": 0.5,
+      "detected": 8,
+      "matched": 8,
+      "error_degrees": 0.11923410093718403
+    },
+    {
+      "seed": 2,
+      "keep": 1,
+      "detected": 17,
+      "matched": 17,
+      "error_degrees": 0.10740728227221695
+    },
+    {
+      "seed": 2,
+      "keep": 0.5,
+      "detected": 8,
+      "matched": 8,
+      "error_degrees": 0.20538507626624342
+    },
+    {
+      "seed": 3,
+      "keep": 1,
+      "detected": 17,
+      "matched": 17,
+      "error_degrees": 0.04423913419459505
+    },
+    {
+      "seed": 3,
+      "keep": 0.5,
+      "detected": 8,
+      "matched": 8,
+      "error_degrees": 0.09186956297795922
+    },
+    {
+      "seed": 4,
+      "keep": 1,
+      "detected": 15,
+      "matched": 15,
+      "error_degrees": 0.10454366957022429
+    },
+    {
+      "seed": 4,
+      "keep": 0.5,
+      "detected": 7,
+      "matched": 7,
+      "error_degrees": 0.08217858076949579
+    },
+    {
+      "seed": 5,
+      "keep": 1,
+      "detected": 15,
+      "matched": 15,
+      "error_degrees": 0.16288804252583958
+    },
+    {
+      "seed": 5,
+      "keep": 0.5,
+      "detected": 7,
+      "matched": 7,
+      "error_degrees": 0.15038821729319735
+    },
+    {
+      "seed": 61,
+      "keep": 1,
+      "detected": 13,
+      "matched": 13,
+      "error_degrees": 0.10080923943876596
+    },
+    {
+      "seed": 61,
+      "keep": 0.5,
+      "detected": 6,
+      "matched": 6,
+      "error_degrees": 0.10080923943876596
+    },
+    {
+      "seed": 701,
+      "keep": 1,
+      "detected": 13,
+      "matched": 13,
+      "error_degrees": 0.05508432325231483
+    },
+    {
+      "seed": 701,
+      "keep": 0.5,
+      "detected": 6,
+      "matched": 6,
+      "error_degrees": 0.066674188740771
+    },
+    {
+      "seed": 9001,
+      "keep": 1,
+      "detected": 14,
+      "matched": 14,
+      "error_degrees": 0.0701109550509198
+    },
+    {
+      "seed": 9001,
+      "keep": 0.5,
+      "detected": 7,
+      "matched": 7,
+      "error_degrees": 0.09516027925459694
+    }
+  ],
+  "conditions": "fixed predeclared seeds, noiseless projected synthetic star catalog, raster quantization; image pixels and catalog only to solver; one-star and blank rejection passed"
+}
