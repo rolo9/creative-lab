@@ -27,3 +27,6 @@ The purpose is to experience possible future artifacts and recognize the academi
 
 ## Current correction — 2026-10-16
 Read the Current redesign section of EXPERIENCE_ROADMAP.md before acting. Human has tried experiences 01/02 and found comparisons did not expand into meaningful design decisions. Older pending-feedback markers are historical. The catching device proposal is withdrawn; do not build it or advance the six-stage map automatically. Keep the ball/floor artifact and develop more data versus missing input, known parameters versus inferred history, model choice and pros/cons, and honest evaluation. AI explains and builds; Human operates, with no mandatory quiz or topic generation. Current task is project redesign, not new feature implementation.
+
+## Current closure — 2026-10-16 midday JST
+Human closed the initial ball/floor learning series as unsuccessful with little learning gained. Preserve artifacts as history; do not continue prior floor-coefficient/model-comparison plans automatically. Read the latest Current closure in EXPERIENCE_ROADMAP.md. AI should select the next useful learning artifact with a clear purpose and one takeaway, without another lengthy optimal-topic selection process. Next topic remains undecided; do not treat earlier image-recognition suggestions as Human-selected. Do not attribute failure to Human comprehension.
