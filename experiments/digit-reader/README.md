@@ -1,0 +1,15 @@
+# 手書き数字を読む
+
+New starting artifact following closure of the ball/floor series. Purpose: read a handwritten digit using two genuinely fitted approaches. One takeaway: the same examples can produce different decisions/errors under different models; evaluate the input where the tool will be used. User is not required to answer a quiz, invent the next topic or implement anything.
+
+Compare kNN (k=3, Euclidean, uniform votes) against multinomial logistic regression (C=1, max_iter1000). Same pixels/16 and stratified image split seed4317,1347 training /450 test. Parameters fixed before evaluation, no search or test tuning. kNN stores examples and compares them at inference; logistic regression learns coefficients. Neither is a neural network. Not a predetermined simple-versus-complex hierarchy.
+
+Actual sklearn digits data:1797 grayscale8x8 handwritten images, values0–16. Provenance and source references in dataset-description.txt and report.json. UCI Optical Recognition of Handwritten Digits, E.Alpaydin/C.Kaynak. sklearn bundled set is itself a copy of the original UCI test portion; our own new training/test image split is inside this set, not the original writer-held-out benchmark. Writer independence of our split is not established. Do not claim unseen-writer generalization. This is not synthetic teacher-generated digit imagery.
+
+Held-out results: kNN444/450; logistic435/450. Error browsing includes either classifier's errors in original test order and is visibly labeled; these examples do not represent the overall distribution. Viewing test errors for instruction makes this a development dataset for any later changes; a future improvement comparison must use a fresh final evaluation design, not claim this test untouched.
+
+Freehand: draw192x192 white strokes, 20px brush, average24x24 blocks to8x8. No crop, deskew or centering; intentionally disclosed mismatch with dataset preprocessing, not fabricated failures. Input is continuous grayscale, normalized the same for both methods. Empty drawings refused; other non-digits may still receive a digit label. No calibrated certainty scores displayed. No upload or storage of drawn inputs.
+
+Rationale: clear utility (reading handwritten entries); same input and data across interpretable alternative mechanisms; neighbors provide directly inspectable evidence; genuine trained classifier, with naturally occurring errors. Future questions: distance representation, preprocessing, data diversity, model capacity, same-input comparisons. Do not jump to unrelated control devices. Connection to Physical AI is perception only, not embodied action or a world model.
+
+Reproduce: pinned requirements environment, `OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python experiments/digit-reader/train.py`; `node tests/digit-reader.test.cjs`. Full Python/JS predictions match across450 tests and selected class probabilities match within1e-10; disjoint image IDs verified. Real Canvas with substitute DOM validates example/error selection, drawing and resampling, blank handling, mode switching. Actual browser layout and touch interaction remain unverified (managed browser QA unavailable).
