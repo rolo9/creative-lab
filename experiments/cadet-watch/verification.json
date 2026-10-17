@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "checks": [
+    "energy/thermal step",
+    "four operating strategies",
+    "buffer overflow",
+    "high-temperature protection",
+    "immutable engine and end guard",
+    "walking and NPC briefing",
+    "science call and consultation",
+    "terminal settings",
+    "ten-minute completion and handoff",
+    "save and restart"
+  ],
+  "results": {
+    "normal": {
+      "temp": 45.676726087769644,
+      "energy": 9.166666666666671,
+      "received": 20,
+      "special": 8,
+      "buffer": 0,
+      "lost": 0,
+      "protected": 0
+    },
+    "high": {
+      "temp": 62.583777175346555,
+      "energy": 0.1666666666666674,
+      "received": 48,
+      "special": 21,
+      "buffer": 1,
+      "lost": 0,
+      "protected": 3
+    },
+    "balanced": {
+      "temp": 41.47261275172817,
+      "energy": 10.166666666666671,
+      "received": 28,
+      "special": 24,
+      "buffer": 4,
+      "lost": 0,
+      "protected": 0
+    },
+    "overflow": {
+      "temp": 51.08796876769913,
+      "energy": 6.666666666666671,
+      "received": 0,
+      "special": 0,
+      "buffer": 32,
+      "lost": 38,
+      "protected": 0
+    }
+  },
+  "browserQA": "unverified: managed preview infrastructure unavailable"
+}
