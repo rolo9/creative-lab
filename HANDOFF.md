@@ -1,5 +1,18 @@
 # Creative Lab — Runtime Handoff (2026-10-12)
 
+## Current — 2026-10-17夜：士官候補生RPG 第1話を制作・配信
+HumanはシミュレーションRPGを希望し、船内・アバターはドット絵、図解・計器は理解しやすい表現という方針を了承。利用枠への配慮から一気に大規模制作せず、一話ずつ区切る。第1話の設計後、制作を了承した。
+
+第1話「最初の当直」：一室を歩く→先輩と会話→探査機を10分間運用→引き継ぎ。タップ/矢印移動、行き先ボタン、科学班の通信、温度・電池・保存/送信の状態変化、当直後の振り返り、ブラウザ内の保存/再開/やり直し。時間は運転ボタンでのみ進む。単なる正解選択や講義の羅列にせず、船内の人物・仕事・結果をつなぐ初版。長期関係・昇進・次任務は未実装。Humanの体験・楽しさ・学習効果は未確認。
+
+- 体験URL: https://creative-lab-hundred-answers.brawnytuna64.chatgpt.site/cadet-watch/index.html （サイト入口も更新）
+- Draft PR #11: https://github.com/rolo9/creative-lab/pull/11 / experiment/cadet-watch / head 98715597e51deb7df0231ab4c5b1909ed2f64a66
+- Sites source: 3cdfc9238b79d40dfa5f2c7bc36df536ca569f3a。owner-private 配信成功。GitHub公開main/index.htmlは不変。
+- 検証：四つの運用方針、熱・電力・容量・保護動作、実Canvas＋代替DOMで移動/着任/通信/相談/設定/終了/引継ぎ/保存/初期化を確認。ドット絵の描画を目視確認。実ブラウザのレイアウト/タッチ確認は未実施（対応プレビュー基盤がbwrapのprocマウント権限エラーで起動不能）。
+- 部屋・人物・惑星・任務・機器仕様は創作。簡略熱収支モデルであり公式設定や実機性能ではない。モデルの式・省略・検証は同ブランチREADMEとverification.jsonに保存。MLやランタイムLLM呼出しは使わない。
+- 以前のML/DL順序・スター・トラッカー拡張は引き続き保留。別学習活動へ無理に接続しない。次は今回の体験を踏まえて調整し、巨大なRPGや全職務を自動追加しない。
+
+
 ## Identity and boundaries
 - Successor chat: **Creative Lab 01** (subsequent chat numbers may change).
 - Repository: **rolo9/creative-lab** (public). Live site: https://rolo9.github.io/creative-lab/
