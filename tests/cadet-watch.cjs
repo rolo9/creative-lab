@@ -1,0 +1,24 @@
+const fs=require('fs'),vm=require('vm'),assert=require('node:assert/strict'),path=require('path');
+const root=process.env.CADET_ROOT||path.resolve(__dirname,'../experiments/cadet-watch');
+const E=require(root+'/engine.js');
+let locked=E.initial();assert.equal(E.step(locked),locked);
+let s=E.initial();s.briefed=true;let old=s;s=E.step(s);assert.equal(old.t,0);assert.equal(s.t,1);assert.equal(s.received,2);assert.equal(s.temp,30.94);assert(Math.abs(s.energy-(30-125/60))<1e-9);
+let exhausted=E.initial();exhausted.briefed=true;exhausted.energy=0.1;exhausted=E.step(exhausted);assert.equal(exhausted.received,0);assert.equal(exhausted.energy,0.1);
+let results={};for(const plan of ['normal','high','balanced','overflow']){s=E.initial();s.briefed=true;for(let i=0;i<10;i++){s.mode=plan==='normal'?'low':plan==='balanced'?(i>=2&&i<6?'high':i>=6?'rest':'low'):'high';s.tx=plan==='overflow'?false:plan==='balanced'?!(i>=2&&i<6):true;s=E.step(s);assert(s.buffer.length<=32);assert(s.energy>=0);assert(Number.isFinite(s.temp));}assert.equal(E.step(s),s);results[plan]={temp:s.temp,energy:s.energy,received:s.received,special:s.special,buffer:s.buffer.length,lost:s.lost,protected:s.protected};}
+assert(results.high.protected>0);assert(results.overflow.lost>0);assert.equal(results.overflow.received,0);assert(results.balanced.special>results.normal.special);assert(results.balanced.temp<results.high.temp);
+// Integration uses real Canvas plus a small substitute DOM. It is not browser QA.
+const {createCanvas}=require(process.env.CANVAS_MODULE||'@napi-rs/canvas');
+const nodes={},events={},data={};let modeBtns=[],goBtns=['mentor','console','window'].map(go=>({dataset:{go}})),timers=new Map(),tid=0;
+class Node{constructor(){this.listeners={};this.dataset={};this.open=false;this.parentElement={scrollTop:0};}set innerHTML(v){this.html=v;for(const m of v.matchAll(/id="([^"]+)"/g))nodes[m[1]]=new Node();modeBtns=[...v.matchAll(/data-mode="([^"]+)"/g)].map(m=>({dataset:{mode:m[1]}}));}get innerHTML(){return this.html||'';}addEventListener(k,f){(this.listeners[k]??=[]).push(f);}showModal(){this.open=true;}close(){this.open=false;(this.listeners.close||[]).forEach(f=>f());}focus(){}}
+for(const m of fs.readFileSync(root+'/index.html','utf8').matchAll(/id="([^"]+)"/g))nodes[m[1]]=new Node();nodes.room=createCanvas(384,224);nodes.room.focus=()=>{};nodes.room.getBoundingClientRect=()=>({left:0,top:0,width:384,height:224});
+const doc={getElementById:id=>nodes[id],querySelectorAll:selector=>selector.includes('data-mode')?modeBtns:goBtns,addEventListener(k,f){events[k]=f;}};
+const box={document:doc,WatchEngine:E,localStorage:{getItem:k=>data[k]||null,setItem:(k,v)=>data[k]=v},setInterval:f=>{timers.set(++tid,f);return tid;},clearInterval:id=>timers.delete(id)};vm.createContext(box);vm.runInContext(fs.readFileSync(root+'/app.js','utf8'),box);
+const run=c=>vm.runInContext(c,box),click=id=>{assert.equal(typeof nodes[id].onclick,'function',id);nodes[id].onclick();};
+click('start');goBtns[0].onclick();for(let i=0;i<100&&timers.size;i++)for(const f of [...timers.values()])f();assert(nodes.dialogBody.innerHTML.includes('ようこそ'));click('accept');assert(run('s.briefed'));
+goBtns[1].onclick();for(let i=0;i<100&&timers.size;i++)for(const f of [...timers.values()])f();assert.equal(run('s.x'),18);assert.equal(run('s.y'),6);click('advance');click('advance');assert(nodes.dialogBody.innerHTML.includes('通信が入りました'));click('notify');click('backTerminal');assert(run('s.notified'));
+modeBtns.find(b=>b.dataset.mode==='high').onclick();nodes.transmit.onchange({target:{checked:false}});click('advance');assert.equal(run('s.tx'),false);assert(run('s.buffer.length')>0);click('leave');goBtns[0].onclick();for(let i=0;i<100&&timers.size;i++)for(const f of [...timers.values()])f();click('heat');assert(nodes.answer.textContent.includes('58°C'));click('close');
+run('terminal()');while(run('s.t')<10)click('advance');assert(nodes.dialogBody.innerHTML.includes('id="advance" class="primary" disabled'));
+click('leave');run('talk()');click('shortReport');click('finish');assert(run('s.finished'));assert(nodes.dialogBody.innerHTML.includes('当直が、記録された'));
+click('backRoom');assert(JSON.parse(data['cadet-watch-v1']).finished);run('saved=JSON.parse(localStorage.getItem(KEY));');click('restart');click('resetYes');assert.equal(run('s.t'),0);assert.equal(run('s.briefed'),false);assert.equal(JSON.parse(data['cadet-watch-v1']).finished,false);
+if(process.env.ROOM_PNG)fs.writeFileSync(process.env.ROOM_PNG,nodes.room.toBuffer('image/png'));
+console.log(JSON.stringify({status:'PASS',checks:['energy/thermal step','four operating strategies','buffer overflow','high-temperature protection','immutable engine and end guard','walking and NPC briefing','science call and consultation','terminal settings','ten-minute completion and handoff','save and restart'],results,browserQA:'unverified: managed preview infrastructure unavailable'},null,2));
