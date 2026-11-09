@@ -100,3 +100,10 @@ Humanは比較・質疑後に「Aですすめましょうか」と指示した�
 - 奥様から届いた画面には「User approval required」とあり、招待を受け入れた後も管理者承認待ちであることが分かった。管理画面でも対象のMemberアカウントが「Needs Approval」と表示されていた。
 - Human承認後に対象アカウントをApprove。画面の承認完了通知と「Needs Approval」表示の消失を確認した。ユーザー別アクセスルールプレビューを読み取り、許可先がNAS接続用機器のIPv4/IPv6アドレスのTCP 443だけであることを確認。既存のアプリ限定ルールの範囲内であり、NAS管理画面・ファイル共有・家庭LAN・他ポートの許可はない。
 - 次は奥様のiPhoneでTailscaleに接続し、専用URLからアプリを開いて既存ログイン・共有記録の表示/保存・夫婦間の反映を確認する。未実施。
+
+
+## 9. 奥様のiPhoneでDNS名が解決されない（2026-11-09 JST）
+
+- Human提供の2枚の画像を確認。Tailscale設定画面には招待されたアカウントが表示されるが、Safariで専用URLを開くと4G接続中に `ERR_NAME_NOT_RESOLVED`。アプリ設定画面だけではVPNが接続中かは確認できない。
+- Tailscale管理画面のDNSを読み取り、MagicDNSが有効、tailnet名が専用URLのホスト名と一致することを確認。Machines一覧には所有者iPhoneとNAS接続機器の2台だけがあり、奥様のiPhoneはまだ接続端末として現れていない。ユーザー別ルールプレビューはアプリ入口のHTTPS（TCP 443）だけを許可。
+- 最も可能性が高い原因は奥様のiPhoneでTailscale VPN接続がまだオンでないこと。URL誤記やMagicDNS管理設定の不足とは現状のEvidenceが合わない。次はTailscaleアプリのメイン画面から接続し、必要なiOS VPN構成の許可後、Machines一覧に奥様の端末が表示されるか確認してからSafariで専用URLを再試行する。接続後も解決しない場合に限り、端末側のTailscale DNS利用状態を調べる。DNS・サブネットルーティング等の変更は未実施。
