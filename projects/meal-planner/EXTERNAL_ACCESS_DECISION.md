@@ -38,3 +38,7 @@ Tailscale両案の無料枠はプランの仕様であり、前回の登録に�
 4. **ランタイム引継ぎの境界**：比較・質疑の記録を本資料へ残し、Humanが方式と許容条件を決めた時点を実作業との切替点とする。変更前に次のランタイムがROADMAP、本資料、承認した操作・保留事項、確認済みのコンテナ停止と本体稼働、既存の復元先を取得して照合する。GitHubにない許可を旧手順や技術試験から推定しない。
 
 [ANO Protocolの実行権限と判断引継ぎ](https://github.com/rolo9/ai-native-os/blob/main/00_System/AI-Collaboration-and-Context-Protocol.md#runtime-authority-check)・[Controller](https://github.com/rolo9/ai-native-os/blob/main/00_System/Controller.md)・[Creative Labの進め方](../../WORKFLOW.md)
+
+## 5. Humanが求める判断材料（2026-11-09 JST）
+
+費用と機能の違いを列挙した段階では選べなかった。Humanが求めていたのは「それぞれは普通どんな場面で使い、今回の家庭ではその使い分けがどう当てはまるか」。家族など利用者が固定なら初回設定を済ませて入口を限定するA、相手に追加設定を頼めずブラウザだけで開いてもらうならBという具体例を示した。その上で、夫婦二人で初回設定後に普段どおり開けるならAを推奨し、外出先で別アプリの接続を繰り返し気にするならBの価値が高くなると説明。次に確かめたい実用上の違いは、外出先でも主利用者がホーム画面から通常どおり開けるか。Humanはこの説明の組み立てを、トレードオフがある他案件のANO出力にも適用するよう依頼した。今回は判断材料への評価で、接続方式の採用・実行の承認は得ていない。[ANOでの横断指針](https://github.com/rolo9/ai-native-os/issues/49#issuecomment-6730132037)
