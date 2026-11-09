@@ -1,7 +1,7 @@
 # こさじ日和 外部利用と保存先の判断資料
 
 2026-11-09 JST  
-状態：**HumanがA（NAS保存＋Tailscaleの家族限定接続）を選択。無料プランとNAS接続の認証を確認。HTTPS有効化・アプリ設定反映済み。非公開入口の起動は操作接続の復旧待ち。** §6が現在の実行範囲。§1〜5は選択に至る比較・質疑の記録。
+状態：**HumanがA（NAS保存＋Tailscaleの家族限定接続）を選択。無料プランとNAS接続の認証を確認。NASの非公開HTTPS入口は起動済み。所有者iPhoneのモバイル回線での確認待ち。** §6が現在の実行範囲。§1〜5は選択に至る比較・質疑の記録。
 
 ## 1. 何を実現するか
 
@@ -72,3 +72,10 @@ Humanは比較・質疑後に「Aですすめましょうか」と指示した�
 - 所有者のOKを受け、TailscaleのHTTPS証明書機能を有効化。管理画面が `Disable HTTPS` 表示に変わったことを確認した。証明書発行・台帳掲載の実行結果までは未確認。
 - NASの家族用HTTPSアドレス1件追加の下書きを、最新イメージ取得オフで再デプロイ。本体・接続用ともログは `Recreated`、コンテナ一覧の両方が「実行中」と表示。接続用コンテナでは既存の状態フォルダのマウントを確認。再デプロイ後のTailscaleへの再接続、アプリの実際のHTTPS到達性は未確認。
 - 接続用コンテナの端末を開く操作の途中でコンピューター接続が切断された。非公開入口の起動コマンドは未送信。次回は接続用コンテナが既存の機器として接続済みであることと `tailscale serve status` / `tailscale funnel status` を読み取り、設定が空なら公式手順どおり `tailscale serve --bg 3000` を実行する。非公開設定・アプリの疎通・所有者端末の実動を確認してから妻の追加へ進む。既に了承されたHTTPS有効化・再デプロイを繰り返さない。
+
+### 非公開入口の起動とNAS側検証（2026-11-09 JST）
+
+- Dockerのプロジェクト詳細と一覧で本体・接続用の2/2が実行中。Docker操作履歴の初回展開失敗は `failfull deploy project 'kosaji-biyori'`（00:46:34）。この履歴は要約で、当時の展開ダイアログの詳細原文は `Error response from daemon: conflicting options: hostname and the network mode` と[初回の調査記録](2026-11-09-external-access-incident.md)に保存済み。接続用サービスの `hostname` と `network_mode: service:kosaji` の競合を修正した。05:01:08のDockerエンジン応答タイムアウトは別時刻のログで、直後にオンラインへ復帰。11:45台の展開成功と混同しない。
+- UGREENの操作画面ではターミナル作成後もセッションが出なかったが、Docker操作履歴には作成成功が記録された。既存のUGREEN接続を再読み込みして作成済みのシェルを選択すると操作できた。ローカルHTTPSはブラウザーの証明書警告まで、SSHは無効を確認。どちらも設定変更なし。
+- 起動前に接続用コンテナのTailscaleが `Running` / `Online: true`、IPv4・IPv6が所有者のHTTPS許可先と一致、ServeとFunnelの両方が `No serve config` と確認。既承認の `tailscale serve --bg 3000` を実行し、`Available within your tailnet` を確認。設定を読み戻し、HTTPS 443のルート `/` が `http://127.0.0.1:3000` だけを中継し、Funnel許可なし・`tailnet only` と確認した。アプリへ実際のホスト名とHTTPS転送ヘッダーを指定したNAS内のリクエストは `HTTP/1.1 200 OK`。今回の実行でCompose、家庭データ、課金設定、利用者の許可は変更していない。個別URL・IP・アカウントは記載しない。
+- 残りは所有者のiPhoneで同じGoogleアカウントのTailscaleに接続し、Wi-Fiを切ってSafariから専用URLへ到達し、既存アプリのログインと既存記録を確認すること。HTTPS証明書の実配信、所有者iPhoneの到達性、妻の招待と許可・両端末からの保存反映、再起動後の復帰は未確認。所有者の確認後に妻の権限追加の具体案を提示する。既存UGREEN経由の所有者テストとは別。必要時に新入口だけ停止する手順は接続用コンテナで `tailscale serve --https=443 off`。
