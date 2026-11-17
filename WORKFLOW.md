@@ -66,6 +66,20 @@ Use the existing implementation Issue or PR for per-update evidence and user-che
 
 This applies the [ANO Protocol](https://github.com/rolo9/ai-native-os/blob/main/00_System/AI-Collaboration-and-Context-Protocol.md) and [Controller](https://github.com/rolo9/ai-native-os/blob/main/00_System/Controller.md) to app maintenance. Existing authority, release, privacy and recovery boundaries govern each action. A test request conveys what to verify. Any change that needs a Human decision is presented separately with the decision and consequence.
 
+### こさじ日和 — 更新・再起動後の外部接続確認（毎回必須）
+
+2026-11-18の所有者指示。こさじ日和の更新、NAS/アプリ/接続用コンテナの再起動、接続障害からの復旧をAIが担当するたび、完了報告の前に以下を実施する。アプリだけを更新してTailscale設定を変更しない場合も省略しない。
+
+1. アプリと接続用コンテナの稼働を確認する。**コンテナの「実行中」だけでは接続正常と判定しない。**
+2. NAS接続用コンテナで `tailscale status --json` を読み、`BackendState=Running` と **NAS自身の `Self.Online=true`** を確認する。利用者のiPhone等のPeer.Onlineで代用しない。
+3. `Health` を確認し、警告/エラーがあれば内容と影響を調べて記録する。未解決なら正常完了と報告しない。
+4. `tailscale serve status` で既存の家族限定HTTPSと正しいアプリへの中継を確認する。確認のためにFunnel公開やアクセス権拡張を行わない。
+5. 接続用コンテナから、既存の許可された利用ホスト名をHostに指定してアプリへHTTP要求を行い、期待する応答を確認する。Hostなしのループバック要求は403になり得る。内部の200応答はiPhoneからの到達確認と区別する。URL等の実値は非公開の既存記録を利用する。
+6. 結果・日時・対象版・復旧操作・未確認事項を担当Issueへ記録する。オフラインなら原因を確認し、既存の許可範囲の復旧後に2〜5を再確認する。認証/権限変更が必要なら別の判断として扱う。
+7. AI側の確認後、普段のiPhoneホームアイコンからの起動確認が必要なら、所有者から聞かれる前に依頼し、その返答を記録する。実施できない確認は未確認と明示する。
+
+これは更新・保守作業の完了手順であり、定時の監視タスクを新設する指示ではない。自動再起動後の常時監視や恒久的な自動復旧を実装したものとも扱わない。今回、コンテナ稼働中でもNAS自身がオフラインであり、接続用コンテナ再起動後にオンラインと本体200を確認し、その後所有者がiPhoneでの表示成功を報告した。[実施記録](https://github.com/rolo9/creative-lab/issues/13)
+
 ### Chat handover in the roadmap — required, 2026-11-09
 
 A single project may need several chats before completion. Plan handovers at recoverable stage boundaries, such as a saved and verified release before starting a separate connection or operation change. For each point, state the work boundary, what must be saved and where, and the next work to recover. Preserve the artifact/version, verified results, decisions/constraints, unfinished work, attempted operations and outcomes, uncertain side effects, and private artifact recovery references in the existing authoritative records. Keep private content and credentials out of this public repository.
